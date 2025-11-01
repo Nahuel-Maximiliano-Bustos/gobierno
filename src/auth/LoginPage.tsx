@@ -29,7 +29,7 @@ export const LoginPage = () => {
 
   return (
     // <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-800 to-slate-900">
-<div className="min-h-screen bg-gradient-to-br from-green-200 via-green-300 to-green-400">
+<div className="min-h-screen bg-gradient-to-br from-[#0F1126] via-[#202552] to-[#353D89]">
 
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-4">
         <Card className="w-full max-w-md border-green-700/40 bg-green-900/70 backdrop-blur">
