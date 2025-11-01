@@ -12,14 +12,14 @@ import {
   FileText,
   LayoutDashboard,
   ListChecks,
-  PiggyBank,
   Settings,
-  Users
+  Users,
+  BadgeDollarSign 
 } from 'lucide-react';
 
 const sections = [
   { to: '/tesoreria/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/tesoreria/ingresos', label: 'Ingresos', icon: PiggyBank },
+  { to: '/tesoreria/ingresos', label: 'Ingresos', icon: BadgeDollarSign },
   { to: '/tesoreria/egresos', label: 'Egresos', icon: Banknote },
   { to: '/tesoreria/compromisos', label: 'Compromisos de Pago', icon: ListChecks },
   { to: '/tesoreria/conciliacion', label: 'Conciliación Bancaria', icon: CreditCard },
@@ -37,16 +37,16 @@ export const SidebarMenu = () => {
   return (
     <aside
       className={cn(
-        'flex h-screen flex-col border-r border-border bg-[#095106] text-green-100 transition-all sticky top-0',
+        'flex h-screen flex-col border-r border-border bg-[#0E1024] text-green-100 transition-all sticky top-0',
         collapsed ? 'w-20' : 'w-64'
       )}
     >
       <div className="flex h-16 items-center justify-between gap-2 px-4 text-lg font-semibold">
         <div className="flex items-center gap-2">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#3DD30F] text-sm font-bold text-white">
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#FFFFFF] text-sm font-bold text-black">
   TM
 </span>
-          {!collapsed ? <span>Sistema Tesorería</span> : null}
+          {!collapsed ? <span className="text-white">Sistema Tesorería</span> : null}
         </div>
         <button
           type="button"
@@ -67,8 +67,8 @@ export const SidebarMenu = () => {
   to={section.to}
   className={({ isActive }) =>
     cn(
-      'group flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-[#2DB80F]',
-      isActive ? 'bg-[#23920B] text-white' : 'text-slate-300'
+      'group flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-[#6f707a]',
+      isActive ? 'bg-[#868791] text-white' : 'text-slate-300'
     )
   }
 >

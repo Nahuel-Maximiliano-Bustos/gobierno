@@ -67,7 +67,7 @@ export const LoginPage = () => {
               </div>
               <Button
   type="submit"
-  className="w-full bg-green-400 hover:bg-green-500 bg-green-500 text-white font-semibold"
+  className="w-full bg-green-400 hover:bg-green-200 bg-green-300 text-white font-semibold"
   disabled={loading}
 >
                 {loading ? 'Verificando…' : 'Ingresar'}
