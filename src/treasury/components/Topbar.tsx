@@ -51,9 +51,9 @@ export const Topbar = ({ onSearch, searchRef }: TopbarProps) => {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="flex items-center gap-2">
             <Avatar>
-              <AvatarFallback className="bg-[#85E971] text-green-900 ">{user?.nombre?.[0] ?? 'T'}</AvatarFallback>
+              <AvatarFallback className="bg-[#777882] text-white ">{user?.nombre?.[0] ?? 'T'}</AvatarFallback>
             </Avatar>
-            <span className="hidden text-sm font-medium md:inline text-white">{user?.nombre ?? 'TESORERO'}</span>
+            <span className="hidden text-sm font-medium md:inline text-black">{user?.nombre ?? 'TESORERO'}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
