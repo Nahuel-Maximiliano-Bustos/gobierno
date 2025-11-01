@@ -45,7 +45,7 @@ export const Topbar = ({ onSearch, searchRef }: TopbarProps) => {
         />
       </form>
 <Button variant="ghost" size="icon" aria-label="Notificaciones">
-  <Bell className="h-5 w-5 text-white" />
+  <Bell className="h-5 w-5 text-black" />
 </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
