@@ -73,7 +73,7 @@ export const TreasuryLayout = () => {
   }, [location.pathname, navigate]);
 
   return (
-    <div className="flex min-h-screen bg-green-100 text-green-900">
+    <div className="flex min-h-screen bg-[#E0E0E0] text-green-900">
       <SidebarMenu />
       <div className="flex flex-1 flex-col">
         <Topbar searchRef={searchRef} onSearch={(term) => term && navigate('/tesoreria/reportes', { state: { term } })} />

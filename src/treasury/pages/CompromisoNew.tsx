@@ -21,22 +21,24 @@ export const CompromisoNew = () => {
   }, [setBreadcrumb]);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Generar compromiso</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <CompromisoWizard
-          proveedores={proveedores ?? []}
-          partidas={presupuesto?.partidas ?? []}
-          cuentas={cuentas ?? []}
-          onSubmit={async (values) => {
-            await mutateAsync(values);
-            navigate('/tesoreria/compromisos');
-          }}
-        />
-        {isPending ? <p className="mt-3 text-xs text-muted-foreground">Guardando compromiso…</p> : null}
-      </CardContent>
-    </Card>
+    <div className="bg-[#E0E0E0] [&_*]:bg-inherit [&_input]:!bg-white [&_select]:!bg-white [&_button]:!bg-white [&_[role='combobox']]:!bg-white">
+      <Card className="!bg-white">
+        <CardHeader>
+          <CardTitle>Generar compromiso</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <CompromisoWizard
+            proveedores={proveedores ?? []}
+            partidas={presupuesto?.partidas ?? []}
+            cuentas={cuentas ?? []}
+            onSubmit={async (values) => {
+              await mutateAsync(values);
+              navigate('/tesoreria/compromisos');
+            }}
+          />
+          {isPending ? <p className="mt-3 text-xs text-muted-foreground">Guardando compromiso…</p> : null}
+        </CardContent>
+      </Card>
+    </div>
   );
 };

@@ -62,7 +62,7 @@ export const CompromisoDetail = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-[#E0E0E0] [&_*]:bg-inherit">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-semibold">{data.concepto}</h1>
@@ -70,24 +70,25 @@ export const CompromisoDetail = () => {
             Programado para {formatDate(data.fechaProgramada)} · {data.proveedor.nombre}
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 bg-[#DCFCE7]">
           <StatusBadge status={data.estatus} />
           {acciones.map((accion) => (
-            <Button key={accion} size="sm" onClick={() => ejecutarTransicion(accion)} disabled={isPending}>
+            <Button key={accion} size="sm" onClick={() => ejecutarTransicion(accion)} disabled={isPending} className="!bg-white">
               {accion}
             </Button>
           ))}
         </div>
       </div>
+      <div className="bg-white">
       <Tabs defaultValue="datos">
-        <TabsList>
+        <TabsList className="!bg-gray-100">
           <TabsTrigger value="datos">Datos</TabsTrigger>
           <TabsTrigger value="presupuesto">Presupuesto</TabsTrigger>
           <TabsTrigger value="adjuntos">Adjuntos</TabsTrigger>
           <TabsTrigger value="bitacora">Bitácora</TabsTrigger>
         </TabsList>
         <TabsContent value="datos" className="mt-4">
-          <Card>
+          <Card className="!bg-white">
             <CardHeader>
               <CardTitle>Información del compromiso</CardTitle>
             </CardHeader>
@@ -123,7 +124,7 @@ export const CompromisoDetail = () => {
           </Card>
         </TabsContent>
         <TabsContent value="presupuesto" className="mt-4">
-          <Card>
+          <Card className="!bg-white">
             <CardHeader>
               <CardTitle>Afectación presupuestal</CardTitle>
             </CardHeader>
@@ -133,7 +134,7 @@ export const CompromisoDetail = () => {
           </Card>
         </TabsContent>
         <TabsContent value="adjuntos" className="mt-4">
-          <Card>
+          <Card className="!bg-white">
             <CardHeader>
               <CardTitle>Adjuntos cargados</CardTitle>
             </CardHeader>
@@ -142,7 +143,7 @@ export const CompromisoDetail = () => {
                 {data.adjuntos?.map((adjunto) => (
                   <li key={adjunto.id} className="flex items-center justify-between rounded border border-border/80 px-3 py-2">
                     <span>{adjunto.name}</span>
-                    <Button variant="ghost" size="sm" onClick={() => toast({ title: 'Descarga simulada', description: adjunto.name })}>
+                    <Button variant="ghost" size="sm" onClick={() => toast({ title: 'Descarga simulada', description: adjunto.name })} className="!bg-transparent hover:!bg-gray-100">
                       Descargar
                     </Button>
                   </li>
@@ -153,7 +154,7 @@ export const CompromisoDetail = () => {
           </Card>
         </TabsContent>
         <TabsContent value="bitacora" className="mt-4">
-          <Card>
+          <Card className="!bg-white">
             <CardHeader>
               <CardTitle>Bitácora de acciones</CardTitle>
             </CardHeader>
@@ -163,7 +164,8 @@ export const CompromisoDetail = () => {
           </Card>
         </TabsContent>
       </Tabs>
-      <Button variant="outline" onClick={() => navigate('/tesoreria/compromisos')}>
+      </div>
+      <Button variant="outline" onClick={() => navigate('/tesoreria/compromisos')} className="!bg-white">
         Regresar a la lista
       </Button>
     </div>
