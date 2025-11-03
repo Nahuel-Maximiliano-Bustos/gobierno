@@ -19,44 +19,45 @@ export const ConfigTesoreriaPage = () => {
   }, [setBreadcrumb]);
 
   return (
-    <div className="space-y-4">
-      <Card>
-        <CardHeader>
+    <div className="space-y-4 bg-[#E0E0E0] [&_*]:bg-inherit">
+      <Card className="!bg-transparent border-0">
+        <CardHeader className="!bg-transparent">
           <CardTitle>Parámetros de validación</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3">
+        <CardContent className="space-y-3 !bg-transparent">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium">UUID obligatorio</p>
               <p className="text-xs text-muted-foreground">Exigir UUID en egresos y compromisos.</p>
             </div>
-            <Switch checked={uuidObligatorio} onCheckedChange={(value) => setUuidObligatorio(Boolean(value))} />
+            <Switch checked={uuidObligatorio} onCheckedChange={(value) => setUuidObligatorio(Boolean(value))} className="!bg-white" />
           </div>
           <div className="grid gap-2 md:grid-cols-2">
             <div>
               <p className="text-sm font-medium">Formato de fecha</p>
-              <Input value={formatoFecha} onChange={(event) => setFormatoFecha(event.target.value)} />
+              <Input value={formatoFecha} onChange={(event) => setFormatoFecha(event.target.value)} className="!bg-white" />
             </div>
             <div>
               <p className="text-sm font-medium">Moneda oficial</p>
-              <Input value={moneda} onChange={(event) => setMoneda(event.target.value)} />
+              <Input value={moneda} onChange={(event) => setMoneda(event.target.value)} className="!bg-white" />
             </div>
           </div>
           <Button
             size="sm"
             onClick={() => toast({ title: 'Configuración guardada', description: 'Las reglas se aplicarán en próximos registros.' })}
+            className="!bg-white"
           >
             Guardar cambios
           </Button>
         </CardContent>
       </Card>
-      <Card>
-        <CardHeader>
+      <Card className="!bg-transparent border-0">
+        <CardHeader className="!bg-transparent">
           <CardTitle>Usuarios autorizados</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="!bg-transparent">
           <p className="text-sm">Usuario activo:</p>
-          <div className="rounded border border-border p-3 text-sm">
+          <div className="rounded border border-border p-3 text-sm !bg-white">
             <p className="font-semibold">{user?.nombre}</p>
             <p className="text-xs text-muted-foreground">{user?.email}</p>
             <p className="text-xs">Rol: {user?.rol}</p>

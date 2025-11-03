@@ -71,22 +71,22 @@ export const IngresosList = () => {
         type="date"
         value={filters.fechaInicio ?? ''}
         onChange={(event) => setFilters((prev) => ({ ...prev, fechaInicio: event.target.value }))}
-        className="w-40"
+        className="w-40 !bg-white"
       />
       <Input
         type="date"
         value={filters.fechaFin ?? ''}
         onChange={(event) => setFilters((prev) => ({ ...prev, fechaFin: event.target.value }))}
-        className="w-40"
+        className="w-40 !bg-white"
       />
       <Input
         placeholder="Fuente"
         value={filters.fuente ?? ''}
         onChange={(event) => setFilters((prev) => ({ ...prev, fuente: event.target.value }))}
-        className="w-40"
+        className="w-40 !bg-white"
       />
       <Select value={filters.cuentaId ?? ''} onValueChange={(value) => setFilters((prev) => ({ ...prev, cuentaId: value || undefined }))}>
-        <SelectTrigger className="w-52">
+        <SelectTrigger className="w-52 !bg-white">
           <SelectValue placeholder="Cuenta" />
         </SelectTrigger>
         <SelectContent>
@@ -98,25 +98,25 @@ export const IngresosList = () => {
           ))}
         </SelectContent>
       </Select>
-      <Button variant="ghost" size="sm" onClick={() => setFilters({})}>
+      <Button variant="ghost" size="sm" onClick={() => setFilters({})} className="!bg-white">
         Limpiar filtros
       </Button>
     </div>
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-[#E0E0E0] [&_*]:bg-inherit">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-semibold">Ingresos capturados</h1>
           <p className="text-sm text-muted-foreground">Control de ingresos municipales por fuente de financiamiento.</p>
         </div>
         <div className="flex items-center gap-2 bg-[#DCFCE7]">
-          <Button variant="outline" size="sm" onClick={() => exportIngresosCSV(data ?? [])} disabled={!data?.length}>
+          <Button variant="outline" size="sm" onClick={() => exportIngresosCSV(data ?? [])} disabled={!data?.length} className="!bg-white">
             <Download className="mr-2 h-4 w-4" /> Exportar CSV
           </Button>
           
-          <Button size="sm" className="bg-[#095106] hover:bg-[#095106] text-white" onClick={() => navigate('/tesoreria/ingresos/nuevo')}>
+          <Button size="sm" className="!bg-[#095106] hover:!bg-[#095106] text-white" onClick={() => navigate('/tesoreria/ingresos/nuevo')}>
             <Plus className="mr-2 h-4 w-4" /> Nuevo ingreso
           </Button>
         </div>

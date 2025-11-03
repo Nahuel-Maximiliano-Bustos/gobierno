@@ -29,43 +29,44 @@ export const BancosCuentasPage = () => {
   };
 
   return (
-    <div className="space-y-4">
-      <Card>
-        <CardHeader>
+    <div className="space-y-4 bg-[#E0E0E0] [&_*]:bg-inherit">
+      <Card className="!bg-transparent border-0">
+        <CardHeader className="!bg-transparent">
           <CardTitle>Registrar cuenta bancaria</CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-3 md:grid-cols-5">
-          <Input placeholder="Banco" value={form.banco ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, banco: event.target.value }))} />
-          <Input placeholder="Nombre" value={form.nombre ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, nombre: event.target.value }))} />
-          <Input placeholder="CLABE" value={form.clabe ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, clabe: event.target.value }))} />
+        <CardContent className="grid gap-3 md:grid-cols-5 !bg-transparent">
+          <Input placeholder="Banco" value={form.banco ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, banco: event.target.value }))} className="!bg-white" />
+          <Input placeholder="Nombre" value={form.nombre ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, nombre: event.target.value }))} className="!bg-white" />
+          <Input placeholder="CLABE" value={form.clabe ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, clabe: event.target.value }))} className="!bg-white" />
           <Input
             type="number"
             step="0.01"
             placeholder="Saldo inicial"
             value={form.saldo ?? 0}
             onChange={(event) => setForm((prev) => ({ ...prev, saldo: Number(event.target.value) }))}
+            className="!bg-white"
           />
-          <Button onClick={handleSubmit} disabled={guardarCuenta.isPending}>
+          <Button onClick={handleSubmit} disabled={guardarCuenta.isPending} className="!bg-white">
             Guardar
           </Button>
         </CardContent>
       </Card>
-      <Card>
-        <CardHeader>
+      <Card className="!bg-transparent border-0">
+        <CardHeader className="!bg-transparent">
           <CardTitle>Cuentas activas</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3">
+        <CardContent className="space-y-3 !bg-transparent">
           {isLoading ? <p className="text-sm text-muted-foreground">Cargando cuentas…</p> : null}
           <ul className="grid gap-3 md:grid-cols-2">
             {data?.map((cuenta) => (
-              <li key={cuenta.id} className="rounded-lg border border-border p-4">
+              <li key={cuenta.id} className="rounded-lg border border-border p-4 !bg-white">
                 <p className="text-sm font-semibold">{cuenta.nombre}</p>
                 <p className="text-xs text-muted-foreground">{cuenta.banco} · {cuenta.clabe}</p>
                 <p className="text-sm">Saldo: {formatCurrency(cuenta.saldo)}</p>
                 <Button
                   variant="outline"
                   size="sm"
-                  className="mt-2"
+                  className="mt-2 !bg-white"
                   onClick={() => setForm(cuenta)}
                 >
                   Editar

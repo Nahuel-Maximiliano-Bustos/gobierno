@@ -32,7 +32,7 @@ export const Topbar = ({ onSearch, searchRef }: TopbarProps) => {
   };
 
   return (
-<header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b border-border bg-green-100/90 px-6 backdrop-blur">
+<header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b border-border bg-[#E0E0E0] px-6 backdrop-blur">
       <form onSubmit={handleSubmit} className="relative flex-1 max-w-xl" role="search">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         <Input
@@ -45,15 +45,15 @@ export const Topbar = ({ onSearch, searchRef }: TopbarProps) => {
         />
       </form>
 <Button variant="ghost" size="icon" aria-label="Notificaciones">
-  <Bell className="h-5 w-5 text-white" />
+  <Bell className="h-5 w-5 text-black" />
 </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="flex items-center gap-2">
             <Avatar>
-              <AvatarFallback className="bg-[#85E971] text-green-900 ">{user?.nombre?.[0] ?? 'T'}</AvatarFallback>
+              <AvatarFallback className="bg-[#777882] text-white ">{user?.nombre?.[0] ?? 'T'}</AvatarFallback>
             </Avatar>
-            <span className="hidden text-sm font-medium md:inline text-white">{user?.nombre ?? 'TESORERO'}</span>
+            <span className="hidden text-sm font-medium md:inline text-black">{user?.nombre ?? 'TESORERO'}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

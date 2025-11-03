@@ -66,24 +66,24 @@ export const EgresosList = () => {
   );
 
   const manualFilters = (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2 !bg-transparent">
       <Input
         type="date"
         value={filters.fechaInicio ?? ''}
         onChange={(event) => setFilters((prev) => ({ ...prev, fechaInicio: event.target.value }))}
-        className="w-40"
+        className="w-40 !bg-white"
       />
       <Input
         type="date"
         value={filters.fechaFin ?? ''}
         onChange={(event) => setFilters((prev) => ({ ...prev, fechaFin: event.target.value }))}
-        className="w-40"
+        className="w-40 !bg-white"
       />
       <Select
         value={filters.proveedorId ?? ''}
         onValueChange={(value) => setFilters((prev) => ({ ...prev, proveedorId: value || undefined }))}
       >
-        <SelectTrigger className="w-48">
+        <SelectTrigger className="w-48 !bg-white">
           <SelectValue placeholder="Proveedor" />
         </SelectTrigger>
         <SelectContent>
@@ -96,7 +96,7 @@ export const EgresosList = () => {
         </SelectContent>
       </Select>
       <Select value={filters.estatus ?? ''} onValueChange={(value) => setFilters((prev) => ({ ...prev, estatus: (value as Egreso['estatus']) || undefined }))}>
-        <SelectTrigger className="w-40">
+        <SelectTrigger className="w-40 !bg-white">
           <SelectValue placeholder="Estatus" />
         </SelectTrigger>
         <SelectContent>
@@ -105,24 +105,24 @@ export const EgresosList = () => {
           <SelectItem value="PAGADO">Pagado</SelectItem>
         </SelectContent>
       </Select>
-      <Button variant="ghost" size="sm" onClick={() => setFilters({})}>
+      <Button variant="ghost" size="sm" onClick={() => setFilters({})} className="!bg-white">
         Limpiar filtros
       </Button>
     </div>
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-[#E0E0E0] [&_*]:bg-inherit">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-semibold">Egresos comprometidos</h1>
           <p className="text-sm text-muted-foreground">Pagos a proveedores y compromisos devengados.</p>
         </div>
-        <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" onClick={() => exportEgresosCSV(data ?? [])} disabled={!data?.length}>
+        <div className="flex items-center gap-2 bg-[#DCFCE7]">
+          <Button variant="outline" size="sm" onClick={() => exportEgresosCSV(data ?? [])} disabled={!data?.length} className="!bg-white">
             <Download className="mr-2 h-4 w-4" /> Exportar CSV
           </Button>
-          <Button size="sm" className="bg-[#095106] hover:bg-[#095106] text-white" onClick={() => navigate('/tesoreria/egresos/nuevo')}>
+          <Button size="sm" className="!bg-[#095106] hover:!bg-[#095106] text-white" onClick={() => navigate('/tesoreria/egresos/nuevo')}>
             <Plus className="mr-2 h-4 w-4" /> Nuevo egreso
           </Button>
         </div>

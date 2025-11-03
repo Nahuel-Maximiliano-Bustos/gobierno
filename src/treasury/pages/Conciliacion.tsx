@@ -52,24 +52,25 @@ export const Conciliacion = () => {
   };
 
   return (
-    <div className="space-y-4">
-      <Card>
-        <CardHeader>
+    <div className="space-y-4 bg-[#E0E0E0] [&_*]:bg-inherit">
+      <Card className="!bg-transparent border-0">
+        <CardHeader className="!bg-transparent">
           <CardTitle>Conciliación bancaria</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 !bg-transparent">
           <div className="flex flex-wrap items-center gap-2">
             <Input
               placeholder="Filtrar por cuenta (ej. CTA-001)"
               value={cuentaId ?? ''}
               onChange={(event) => setCuentaId(event.target.value || undefined)}
-              className="w-48"
+              className="w-48 !bg-white"
             />
-            <Input type="file" accept=".csv" onChange={handleImport} className="w-60" />
+            <Input type="file" accept=".csv" onChange={handleImport} className="w-60 !bg-white" />
             <Button
               variant="outline"
               size="sm"
               onClick={() => downloadFile('conciliacion_ejemplo.csv', sampleConciliacion, 'text/csv')}
+              className="!bg-white"
             >
               Descargar plantilla
             </Button>
