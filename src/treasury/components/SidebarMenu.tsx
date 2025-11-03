@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { cn } from '@shared/lib/utils';
 import { useUIStore } from '@shared/store/ui.store';
@@ -6,15 +7,19 @@ import {
   BarChart3,
   BookOpenCheck,
   Building2,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
   CreditCard,
   FileText,
   LayoutDashboard,
   ListChecks,
   Settings,
   Users,
-  BadgeDollarSign 
+  BadgeDollarSign,
+  BanknoteArrowUp,
+  BanknoteArrowDown
 } from 'lucide-react';
 
 const sections = [
@@ -27,13 +32,22 @@ const sections = [
   { to: '/tesoreria/proveedores', label: 'Proveedores', icon: Users },
   { to: '/tesoreria/bancos', label: 'Bancos y Cuentas', icon: Building2 },
   { to: '/tesoreria/movimientos', label: 'Movimientos Bancarios', icon: BookOpenCheck },
-  { to: '/tesoreria/reportes', label: 'Reportes', icon: FileText },
+  { 
+    label: 'Reportes', 
+    icon: FileText,
+    subItems: [
+      { to: '/tesoreria/reportes/ingresos', label: 'Ingresos', icon: BanknoteArrowUp },
+      { to: '/tesoreria/reportes/egresos', label: 'Egresos', icon: BanknoteArrowDown }
+    ]
+  },
   { to: '/tesoreria/config', label: 'Configuración de Tesorería', icon: Settings }
 ];
 
 export const SidebarMenu = () => {
   const collapsed = useUIStore((state) => state.sidebarCollapsed);
   const toggleSidebar = useUIStore((state) => state.toggleSidebar);
+  const [openReportes, setOpenReportes] = useState(false);
+
   return (
     <aside
       className={cn(
@@ -44,8 +58,8 @@ export const SidebarMenu = () => {
       <div className="flex h-16 items-center justify-between gap-2 px-4 text-lg font-semibold">
         <div className="flex items-center gap-2">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#FFFFFF] text-sm font-bold text-black">
-  TM
-</span>
+            TM
+          </span>
           {!collapsed ? <span className="text-white">Sistema Tesorería</span> : null}
         </div>
         <button
@@ -61,20 +75,75 @@ export const SidebarMenu = () => {
         <ul className="space-y-1">
           {sections.map((section) => {
             const Icon = section.icon;
+            
+            // Si tiene subItems, renderizar desplegable
+            if ('subItems' in section) {
+              return (
+                <li key={section.label}>
+                  <button
+                    onClick={() => setOpenReportes(!openReportes)}
+                    className={cn(
+                      'group flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-[#6f707a] text-slate-300',
+                      openReportes && 'bg-[#868791] text-white'
+                    )}
+                  >
+                    <Icon className="h-5 w-5" />
+                    {!collapsed && (
+                      <>
+                        <span className="flex-1 text-left">{section.label}</span>
+                        {openReportes ? (
+                          <ChevronUp className="h-4 w-4" />
+                        ) : (
+                          <ChevronDown className="h-4 w-4" />
+                        )}
+                      </>
+                    )}
+                  </button>
+                  
+                  {/* Submenú - se muestra tanto colapsado como expandido */}
+                  {openReportes && (
+                    <ul className={cn("mt-1 space-y-1", collapsed ? "ml-0" : "ml-8")}>
+                      {section.subItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+                        return (
+                          <li key={subItem.to}>
+                            <NavLink
+                              to={subItem.to}
+                              className={({ isActive }) =>
+                                cn(
+                                  'flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-[#6f707a]',
+                                  isActive ? 'bg-[#868791] text-white' : 'text-slate-300'
+                                )
+                              }
+                              title={collapsed ? subItem.label : undefined}
+                            >
+                              <SubIcon className="h-4 w-4" />
+                              {!collapsed && <span>{subItem.label}</span>}
+                            </NavLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </li>
+              );
+            }
+            
+            // Items normales sin submenú
             return (
               <li key={section.to}>
                 <NavLink
-  to={section.to}
-  className={({ isActive }) =>
-    cn(
-      'group flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-[#6f707a]',
-      isActive ? 'bg-[#868791] text-white' : 'text-slate-300'
-    )
-  }
->
-  <Icon className="h-5 w-5" />
-  {!collapsed ? <span>{section.label}</span> : null}
-</NavLink>
+                  to={section.to}
+                  className={({ isActive }) =>
+                    cn(
+                      'group flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-[#6f707a]',
+                      isActive ? 'bg-[#868791] text-white' : 'text-slate-300'
+                    )
+                  }
+                >
+                  <Icon className="h-5 w-5" />
+                  {!collapsed ? <span>{section.label}</span> : null}
+                </NavLink>
               </li>
             );
           })}
