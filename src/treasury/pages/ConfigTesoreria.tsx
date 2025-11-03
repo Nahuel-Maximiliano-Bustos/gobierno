@@ -45,7 +45,7 @@ export const ConfigTesoreriaPage = () => {
           <Button
             size="sm"
             onClick={() => toast({ title: 'Configuración guardada', description: 'Las reglas se aplicarán en próximos registros.' })}
-            className="!bg-white"
+            className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white"
           >
             Guardar cambios
           </Button>

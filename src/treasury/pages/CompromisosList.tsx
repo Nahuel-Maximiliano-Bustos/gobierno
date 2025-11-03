@@ -100,7 +100,7 @@ export const CompromisosList = () => {
           ))}
         </SelectContent>
       </Select>
-      <Button variant="ghost" size="sm" onClick={() => setFilters({})} className="!bg-white">
+      <Button variant="ghost" size="sm" onClick={() => setFilters({})} className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white">
         Limpiar filtros
       </Button>
     </div>
@@ -114,7 +114,7 @@ export const CompromisosList = () => {
           <p className="text-sm text-muted-foreground">Gestione el flujo de autorizaciones y pagos.</p>
         </div>
         <div className="bg-[#DCFCE7]">
-          <Button size="sm" className="!bg-[#095106] hover:!bg-[#095106] text-white" onClick={() => navigate('/tesoreria/compromisos/nuevo')}>
+          <Button size="sm" className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" onClick={() => navigate('/tesoreria/compromisos/nuevo')}>
             <Plus className="mr-2 h-4 w-4" /> Nuevo compromiso
           </Button>
         </div>

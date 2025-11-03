@@ -20,14 +20,13 @@ export const DashboardTesoreria = () => {
           <h1 className="text-2xl font-semibold">Panel general</h1>
           <p className="text-sm text-muted-foreground">Seguimiento financiero diario del municipio.</p>
         </div>
-  <Button 
-  variant="outline" 
-  className="bg-[#095106] text-white hover:bg-[#0a6508] active:bg-[#084504] border-[#095106] hover:border-[#0a6508]" 
-  size="sm" 
-  onClick={() => refetch()}
->
-  <RefreshCcw className="mr-2 h-4 w-4" /> Actualizar
-</Button>
+        <Button 
+          className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" 
+          size="sm" 
+          onClick={() => refetch()}
+        >
+          <RefreshCcw className="mr-2 h-4 w-4" /> Actualizar
+        </Button>
       </div>
       <KPIWidgets data={data} isLoading={isLoading} />
     </div>
