@@ -62,7 +62,7 @@ export const Topbar = ({ onSearch, searchRef }: TopbarProps) => {
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Sesión activa</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onSelect={() => navigate('/tesoreria/config')}>
+            <DropdownMenuItem onSelect={() => navigate('/tesoreria/perfil')}>
               <User className="mr-2 h-4 w-4" /> Perfil
             </DropdownMenuItem>
             <DropdownMenuSeparator />

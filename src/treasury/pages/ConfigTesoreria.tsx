@@ -170,107 +170,131 @@ export const ConfigTesoreriaPage = () => {
 
       {/* Popup para agregar usuario */}
       {showPopup && (
-        <div className="popup-overlay active">
-          <div className="popup">
-            <div className="popup-header">
-              <h2 className="popup-title">Información de perfil</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg w-full max-w-md mx-4">
+            <div className="flex justify-between items-center p-6 border-b">
+              <h2 className="text-xl font-semibold text-gray-800">Información de perfil</h2>
               <button 
-                className="close-btn" 
+                className="text-gray-500 hover:text-gray-700 text-2xl"
                 onClick={() => setShowPopup(false)}
               >
                 &times;
               </button>
             </div>
             
-            <form onSubmit={handleSubmit}>
-              <div className="form-row">
-                <div className="form-group" style={{flex: 1}}>
-                  <label htmlFor="nombre">Nombre</label>
+            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-1">
+                    Nombre
+                  </label>
                   <input 
                     type="text" 
                     id="nombre" 
                     required
                     value={nuevoUsuario.nombre}
                     onChange={(e) => handleInputChange('nombre', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
-                <div className="form-group" style={{flex: 1}}>
-                  <label htmlFor="apellido">Apellido</label>
+                <div>
+                  <label htmlFor="apellido" className="block text-sm font-medium text-gray-700 mb-1">
+                    Apellido
+                  </label>
                   <input 
                     type="text" 
                     id="apellido" 
                     required
                     value={nuevoUsuario.apellido}
                     onChange={(e) => handleInputChange('apellido', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
               
-              <div className="form-row">
-                <div className="form-group" style={{flex: 1}}>
-                  <label htmlFor="rfc">RFC</label>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="rfc" className="block text-sm font-medium text-gray-700 mb-1">
+                    RFC
+                  </label>
                   <input 
                     type="text" 
                     id="rfc" 
                     required
                     value={nuevoUsuario.rfc}
                     onChange={(e) => handleInputChange('rfc', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
-                <div className="form-group" style={{flex: 1}}>
-                  <label htmlFor="telefono">Teléfono</label>
+                <div>
+                  <label htmlFor="telefono" className="block text-sm font-medium text-gray-700 mb-1">
+                    Teléfono
+                  </label>
                   <input 
                     type="tel" 
                     id="telefono" 
                     required
                     value={nuevoUsuario.telefono}
                     onChange={(e) => handleInputChange('telefono', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
               
-              <div className="form-group">
-                <label htmlFor="mail">Mail</label>
+              <div>
+                <label htmlFor="mail" className="block text-sm font-medium text-gray-700 mb-1">
+                  Mail
+                </label>
                 <input 
                   type="email" 
                   id="mail" 
                   required
                   value={nuevoUsuario.mail}
                   onChange={(e) => handleInputChange('mail', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               
-              <div className="form-group">
-                <label htmlFor="rol">Rol</label>
+              <div>
+                <label htmlFor="rol" className="block text-sm font-medium text-gray-700 mb-1">
+                  Rol
+                </label>
                 <input 
                   type="text" 
                   id="rol" 
                   required
                   value={nuevoUsuario.rol}
                   onChange={(e) => handleInputChange('rol', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               
-              <div className="form-group">
-                <label htmlFor="direccion">Dirección</label>
+              <div>
+                <label htmlFor="direccion" className="block text-sm font-medium text-gray-700 mb-1">
+                  Dirección
+                </label>
                 <input 
                   type="text" 
                   id="direccion" 
                   required
                   value={nuevoUsuario.direccion}
                   onChange={(e) => handleInputChange('direccion', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               
-              <div className="form-actions">
+              <div className="flex justify-end gap-3 pt-4">
                 <button 
-                  type="button" 
-                  className="btn-cancelar" 
+                  type="button"
                   onClick={() => setShowPopup(false)}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-md transition-colors"
                 >
                   Cancelar
                 </button>
-                <button type="submit" className="btn-guardar">
+                <button 
+                  type="submit"
+                  className="px-4 py-2 text-sm font-medium text-white bg-[#0E1024] hover:bg-[#1a1d3a] rounded-md transition-colors"
+                >
                   Guardar cambios
                 </button>
               </div>
@@ -278,139 +302,6 @@ export const ConfigTesoreriaPage = () => {
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        .popup-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.5);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 1000;
-          opacity: 0;
-          visibility: hidden;
-          transition: opacity 0.3s, visibility 0.3s;
-        }
-        
-        .popup-overlay.active {
-          opacity: 1;
-          visibility: visible;
-        }
-        
-        .popup {
-          background-color: white;
-          width: 90%;
-          max-width: 500px;
-          border-radius: 10px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-          padding: 30px;
-          transform: scale(0.8);
-          transition: transform 0.3s;
-        }
-        
-        .popup-overlay.active .popup {
-          transform: scale(1);
-        }
-        
-        .popup-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 20px;
-          padding-bottom: 15px;
-          border-bottom: 1px solid #eee;
-        }
-        
-        .popup-title {
-          font-size: 24px;
-          color: #2c3e50;
-        }
-        
-        .close-btn {
-          background: none;
-          border: none;
-          font-size: 24px;
-          cursor: pointer;
-          color: #7f8c8d;
-          transition: color 0.3s;
-        }
-        
-        .close-btn:hover {
-          color: #e74c3c;
-        }
-        
-        .form-group {
-          margin-bottom: 20px;
-        }
-        
-        .form-row {
-          display: flex;
-          gap: 15px;
-          margin-bottom: 20px;
-        }
-        
-        .form-group label {
-          display: block;
-          margin-bottom: 8px;
-          font-weight: 600;
-          color: #2c3e50;
-        }
-        
-        .form-group input {
-          width: 100%;
-          padding: 10px 15px;
-          border: 1px solid #ddd;
-          border-radius: 5px;
-          font-size: 16px;
-          transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus {
-          border-color: #3498db;
-          outline: none;
-        }
-        
-        .form-actions {
-          display: flex;
-          justify-content: flex-end;
-          gap: 10px;
-          margin-top: 30px;
-        }
-        
-        .btn-cancelar {
-          background-color: #e74c3c;
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 5px;
-          cursor: pointer;
-          font-size: 16px;
-          transition: background-color 0.3s;
-        }
-        
-        .btn-cancelar:hover {
-          background-color: #c0392b;
-        }
-        
-        .btn-guardar {
-          background-color: #2ecc71;
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 5px;
-          cursor: pointer;
-          font-size: 16px;
-          transition: background-color 0.3s;
-        }
-        
-        .btn-guardar:hover {
-          background-color: #27ae60;
-        }
-      `}</style>
     </div>
   );
 };

@@ -19,6 +19,7 @@ import { BancosCuentasPage } from '@treasury/pages/BancosCuentas';
 import { MovimientosBancariosPage } from '@treasury/pages/MovimientosBancarios';
 import { ReporteIngresosPage } from '@treasury/pages/ReporteIngresos';
 import { ReporteEgresosPage } from '@treasury/pages/ReporteEgresos';
+import { PerfilTesoreriaPage } from '@treasury/pages/Perfil';
 import { ConfigTesoreriaPage } from '@treasury/pages/ConfigTesoreria';
 import { NotFound } from '@pages/NotFound';
 
@@ -58,7 +59,7 @@ export const router = createBrowserRouter([
           // { path: 'reportes/egresos', element: <ReporteEgresosPage /> },
           { path: 'reportes/ingresos', element: <ReporteIngresosPage /> },
           { path: 'reportes/egresos', element: <ReporteEgresosPage /> },
-          
+          { path: "/tesoreria/perfil", element: <PerfilTesoreriaPage />},
           
           { path: 'config', element: <ConfigTesoreriaPage /> }
         ]
