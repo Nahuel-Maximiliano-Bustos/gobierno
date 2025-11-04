@@ -148,7 +148,7 @@ export const ProveedoresPage = () => {
         <Input placeholder="RFC" value={nuevo.rfc ?? ''} onChange={(event) => setNuevo((prev) => ({ ...prev, rfc: event.target.value.toUpperCase() }))} />
         <Input placeholder="Correo" value={nuevo.email ?? ''} onChange={(event) => setNuevo((prev) => ({ ...prev, email: event.target.value }))} />
         <Input placeholder="Teléfono" value={nuevo.telefono ?? ''} onChange={(event) => setNuevo((prev) => ({ ...prev, telefono: event.target.value }))} />
-        <Button onClick={handleCrear} disabled={crear.isPending}>
+        <Button className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" onClick={handleCrear} disabled={crear.isPending}>
           Agregar proveedor
         </Button>
       </div>

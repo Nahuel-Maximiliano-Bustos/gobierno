@@ -58,10 +58,10 @@ export const ReportesTesoreriaPage = () => {
                 <p className="text-xs text-muted-foreground">Total registros: {data.libroIngresos.length}</p>
               </div>
               <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" onClick={() => exportReporteCSV('libro_ingresos', data.libroIngresos)}>
+                <Button className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" size="sm" onClick={() => exportReporteCSV('libro_ingresos', data.libroIngresos)}>
                   Exportar CSV
                 </Button>
-                <Button variant="ghost" size="sm" onClick={() => toast({ title: 'Exportación PDF', description: 'Se generará en el sistema de reportes oficial.' })}>
+                <Button className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" size="sm" onClick={() => toast({ title: 'Exportación PDF', description: 'Se generará en el sistema de reportes oficial.' })}>
                   Exportar PDF
                 </Button>
               </div>
@@ -82,10 +82,10 @@ export const ReportesTesoreriaPage = () => {
                 <p className="text-xs text-muted-foreground">Total registros: {data.libroEgresos.length}</p>
               </div>
               <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" onClick={() => exportReporteCSV('libro_egresos', data.libroEgresos)}>
+                <Button className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" size="sm" onClick={() => exportReporteCSV('libro_egresos', data.libroEgresos)}>
                   Exportar CSV
                 </Button>
-                <Button variant="ghost" size="sm" onClick={() => toast({ title: 'Exportación PDF', description: 'Se generará en el sistema de reportes oficial.' })}>
+                <Button className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" size="sm" onClick={() => toast({ title: 'Exportación PDF', description: 'Se generará en el sistema de reportes oficial.' })}>
                   Exportar PDF
                 </Button>
               </div>
@@ -116,7 +116,7 @@ export const ReportesTesoreriaPage = () => {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle>Flujo de caja</CardTitle>
-              <Button variant="outline" size="sm" onClick={() => exportReporteCSV('flujo_caja', [{ flujo: data.flujoCaja }])}>
+              <Button className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" size="sm" onClick={() => exportReporteCSV('flujo_caja', [{ flujo: data.flujoCaja }])}>
                 Exportar CSV
               </Button>
             </CardHeader>

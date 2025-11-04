@@ -50,3 +50,8 @@ body {
   background-color: hsla(222, 47%, 11%, 0.25);
   border-radius: 9999px;
 }
+
+
+.text-muted-foreground{
+  color: #4F5051 !important;
+}

@@ -105,7 +105,7 @@ export const EgresosList = () => {
           <SelectItem value="PAGADO">Pagado</SelectItem>
         </SelectContent>
       </Select>
-      <Button variant="ghost" size="sm" onClick={() => setFilters({})} className="!bg-white">
+      <Button variant="ghost" size="sm" onClick={() => setFilters({})} className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white">
         Limpiar filtros
       </Button>
     </div>
@@ -119,10 +119,10 @@ export const EgresosList = () => {
           <p className="text-sm text-muted-foreground">Pagos a proveedores y compromisos devengados.</p>
         </div>
         <div className="flex items-center gap-2 bg-[#DCFCE7]">
-          <Button variant="outline" size="sm" onClick={() => exportEgresosCSV(data ?? [])} disabled={!data?.length} className="!bg-white">
+          <Button variant="outline" size="sm" onClick={() => exportEgresosCSV(data ?? [])} disabled={!data?.length} className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white">
             <Download className="mr-2 h-4 w-4" /> Exportar CSV
           </Button>
-          <Button size="sm" className="!bg-[#095106] hover:!bg-[#095106] text-white" onClick={() => navigate('/tesoreria/egresos/nuevo')}>
+          <Button size="sm" className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" onClick={() => navigate('/tesoreria/egresos/nuevo')}>
             <Plus className="mr-2 h-4 w-4" /> Nuevo egreso
           </Button>
         </div>
