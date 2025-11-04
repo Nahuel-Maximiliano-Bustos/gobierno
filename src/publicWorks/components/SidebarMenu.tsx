@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { cn } from '@shared/lib/utils';
 import { useUIStore } from '@shared/store/ui.store';
-import { useAuth } from '@auth/useAuth';
 import {
   Banknote,
   BarChart3,
@@ -20,11 +19,11 @@ import {
   Settings,
   Users,
   BadgeDollarSign,
-  CircleDollarSign,
-  TrendingDown,
+  BanknoteArrowUp,
+  BanknoteArrowDown,
   LogOut
 } from 'lucide-react';
-import { ConfigTesoreriaPage } from '../../treasury/pages/ConfigTesoreria'
+import { useAuth } from '@auth/useAuth';
 
 const sections = [
   { to: '/tesoreria/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -35,26 +34,18 @@ const sections = [
   { to: '/tesoreria/presupuesto', label: 'Presupuesto', icon: BarChart3 },
   { to: '/tesoreria/proveedores', label: 'Proveedores', icon: Users },
   { to: '/tesoreria/bancos', label: 'Bancos y Cuentas', icon: Building2 },
-  { to: '/tesoreria/movimientos', label: 'Movimientos Bancarios', icon: BookOpenCheck },
-    { to: '/tesoreria/movimientos', label: 'Movimientos Bancarios', icon: BookOpenCheck },
-  { 
-    label: 'Reportes', 
-    icon: FileText,
-    subItems: [
-      { to: '/tesoreria/reportes/ingresos', label: 'Ingresos', icon: CircleDollarSign },
-      { to: '/tesoreria/reportes/egresos', label: 'Egresos', icon: TrendingDown }
-    ]
-  },
-  { to: '/tesoreria/config', label: 'Configuración de Tesorería', icon: Settings },
-  { action: 'logout', label: 'Cerrar Sesión', icon: LogOut },
-    { to: '/tesoreria/config', label: 'Configuración de Tesorería', icon: Settings },
+  { to: '/tesoreria/config', label: 'Configuración de Tesorería', icon: Settings }
 ];
 
 export const SidebarMenu = () => {
   const collapsed = useUIStore((state) => state.sidebarCollapsed);
   const toggleSidebar = useUIStore((state) => state.toggleSidebar);
   const [openReportes, setOpenReportes] = useState(false);
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <aside
@@ -81,7 +72,7 @@ export const SidebarMenu = () => {
       </div>
       <nav className="flex-1 overflow-y-auto px-2 pb-6">
         <ul className="space-y-1">
-          {sections.map((section, index) => {
+          {sections.map((section) => {
             const Icon = section.icon;
             
             // Si tiene subItems, renderizar desplegable
@@ -137,24 +128,6 @@ export const SidebarMenu = () => {
               );
             }
             
-            // Si es una acción (como logout)
-            if ('action' in section) {
-              return (
-                <li key={section.label}>
-                  <button
-                    onClick={() => logout()}
-                    className={cn(
-                      'group flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-red-900/30 text-slate-300 hover:text-red-400'
-                    )}
-                    title={collapsed ? section.label : undefined}
-                  >
-                    <Icon className="h-5 w-5" />
-                    {!collapsed && <span>{section.label}</span>}
-                  </button>
-                </li>
-              );
-            }
-            
             // Items normales sin submenú
             return (
               <li key={section.to}>
@@ -173,6 +146,17 @@ export const SidebarMenu = () => {
               </li>
             );
           })}
+          
+          {/* Cerrar sesión */}
+          <li>
+            <button
+              onClick={handleLogout}
+              className="group flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-red-900/30 text-slate-300 hover:text-red-300"
+            >
+              <LogOut className="h-5 w-5" />
+              {!collapsed ? <span>Cerrar Sesión</span> : null}
+            </button>
+          </li>
         </ul>
       </nav>
       <footer className="border-t border-slate-800 px-3 py-4 text-xs text-slate-500">

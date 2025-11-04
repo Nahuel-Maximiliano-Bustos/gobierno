@@ -47,6 +47,7 @@ const sections = [
   { to: '/tesoreria/config', label: 'Configuración de Tesorería', icon: Settings }
 ];
 
+
 export const SidebarMenu = () => {
   const collapsed = useUIStore((state) => state.sidebarCollapsed);
   const toggleSidebar = useUIStore((state) => state.toggleSidebar);
