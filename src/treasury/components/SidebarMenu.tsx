@@ -1,3 +1,5 @@
+// Este es el menu de tesorería (Lo aclaro porque hay dos menús, uno para tesorería y otro para obras públicas)
+
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { cn } from '@shared/lib/utils';
@@ -19,8 +21,10 @@ import {
   Users,
   BadgeDollarSign,
   BanknoteArrowUp,
-  BanknoteArrowDown
+  BanknoteArrowDown,
+  LogOut
 } from 'lucide-react';
+import { useAuth } from '@auth/useAuth';
 
 const sections = [
   { to: '/tesoreria/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -43,10 +47,16 @@ const sections = [
   { to: '/tesoreria/config', label: 'Configuración de Tesorería', icon: Settings }
 ];
 
+
 export const SidebarMenu = () => {
   const collapsed = useUIStore((state) => state.sidebarCollapsed);
   const toggleSidebar = useUIStore((state) => state.toggleSidebar);
   const [openReportes, setOpenReportes] = useState(false);
+const { user, logout } = useAuth();
+  const handleLogout = () => {
+    // Aquí va tu lógica de logout
+    logout();
+  };
 
   return (
     <aside
@@ -147,6 +157,17 @@ export const SidebarMenu = () => {
               </li>
             );
           })}
+          
+          {/* Cerrar sesión */}
+          <li>
+            <button
+              onClick={handleLogout}
+              className="group flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-red-900/30 text-slate-300 hover:text-red-300"
+            >
+              <LogOut className="h-5 w-5" />
+              {!collapsed ? <span>Cerrar Sesión</span> : null}
+            </button>
+          </li>
         </ul>
       </nav>
       <footer className="border-t border-slate-800 px-3 py-4 text-xs text-slate-500">

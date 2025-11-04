@@ -46,10 +46,10 @@ export const Topbar = ({ onSearch, searchRef }: TopbarProps) => {
       </form>
       
       <div className="ml-auto flex items-center gap-4">
-        <Button variant="ghost" size="icon" aria-label="Notificaciones">
+        {/* <Button variant="ghost" size="icon" aria-label="Notificaciones">
           <Bell className="h-5 w-5 text-black" />
         </Button>
-        
+         */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2">
@@ -62,7 +62,7 @@ export const Topbar = ({ onSearch, searchRef }: TopbarProps) => {
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Sesión activa</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onSelect={() => navigate('/tesoreria/config')}>
+            <DropdownMenuItem onSelect={() => navigate('/tesoreria/perfil')}>
               <User className="mr-2 h-4 w-4" /> Perfil
             </DropdownMenuItem>
             <DropdownMenuSeparator />

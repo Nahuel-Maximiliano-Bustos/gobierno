@@ -26,19 +26,19 @@ export const PresupuestoPage = () => {
   const totalPagado = data.partidas.reduce((sum, partida) => sum + ((partida as any).pagado ?? 0), 0);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 !bg-[#FFFFFF]">
       <Card>
         <CardHeader>
           <CardTitle>Resumen presupuestal {data.ejercicio}</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-2">
           <div className="rounded-lg border border-border p-4">
-            <p className="text-sm text-muted-foreground">Disponible total</p>
-            <p className="text-2xl font-semibold">{formatCurrency(totalDisponible)}</p>
+            <p className="text-sm text-black !bg-[#CACACA]">Disponible total</p>
+            <p className="text-2xl font-semibold !bg-[#CACACA]">{formatCurrency(totalDisponible)}</p>
           </div>
           <div className="rounded-lg border border-border p-4">
-            <p className="text-sm text-muted-foreground">Pagado</p>
-            <p className="text-2xl font-semibold text-primary">{formatCurrency(totalPagado)}</p>
+            <p className="text-sm text-muted-foreground !bg-[#CACACA]">Pagado</p>
+            <p className="text-2xl font-semibold text-black !bg-[#CACACA]">{formatCurrency(totalPagado)}</p>
           </div>
         </CardContent>
       </Card>
@@ -77,18 +77,18 @@ export const PresupuestoPage = () => {
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle>Registrar modificación presupuestal</CardTitle>
+          <CardTitle>Resumen presupuestal {data.ejercicio}</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-3 md:grid-cols-4">
-          <Input placeholder="Partida" value={partida} onChange={(event) => setPartida(event.target.value)} />
-          <Input
+          <Input className="!bg-[#CACACA] placeholder:text-[#7D8184]" placeholder="Partida" value={partida} onChange={(event) => setPartida(event.target.value)} />
+          <Input className="!bg-[#CACACA] !placeholder:text-[#7D8184]"
             type="number"
             step="0.01"
             placeholder="Monto"
             value={monto}
             onChange={(event) => setMonto(Number(event.target.value))}
           />
-          <Input placeholder="Motivo" value={motivo} onChange={(event) => setMotivo(event.target.value)} />
+          <Input className="!bg-[#CACACA] placeholder:text-[#7D8184]" placeholder="Motivo" value={motivo} onChange={(event) => setMotivo(event.target.value)} />
           <Button className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white"
             onClick={async () => {
               if (!partida || !monto || !motivo) {

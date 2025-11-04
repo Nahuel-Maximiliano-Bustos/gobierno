@@ -17,7 +17,9 @@ import { PresupuestoPage } from '@treasury/pages/Presupuesto';
 import { ProveedoresPage } from '@treasury/pages/Proveedores';
 import { BancosCuentasPage } from '@treasury/pages/BancosCuentas';
 import { MovimientosBancariosPage } from '@treasury/pages/MovimientosBancarios';
-import { ReportesTesoreriaPage } from '@treasury/pages/ReportesTesoreria';
+import { ReporteIngresosPage } from '@treasury/pages/ReporteIngresos';
+import { ReporteEgresosPage } from '@treasury/pages/ReporteEgresos';
+import { PerfilTesoreriaPage } from '@treasury/pages/Perfil';
 import { ConfigTesoreriaPage } from '@treasury/pages/ConfigTesoreria';
 import { NotFound } from '@pages/NotFound';
 
@@ -35,7 +37,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/tesoreria',
-        element: <TreasuryLayout />, 
+        element: <TreasuryLayout />,
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> },
           { path: 'dashboard', element: <DashboardTesoreria /> },
@@ -53,7 +55,12 @@ export const router = createBrowserRouter([
           { path: 'proveedores', element: <ProveedoresPage /> },
           { path: 'bancos', element: <BancosCuentasPage /> },
           { path: 'movimientos', element: <MovimientosBancariosPage /> },
-          { path: 'reportes', element: <ReportesTesoreriaPage /> },
+          // { path: 'reportes/ingresos', element: <ReporteIngresosPage /> },
+          // { path: 'reportes/egresos', element: <ReporteEgresosPage /> },
+          { path: 'reportes/ingresos', element: <ReporteIngresosPage /> },
+          { path: 'reportes/egresos', element: <ReporteEgresosPage /> },
+          { path: "/tesoreria/perfil", element: <PerfilTesoreriaPage />},
+          
           { path: 'config', element: <ConfigTesoreriaPage /> }
         ]
       }

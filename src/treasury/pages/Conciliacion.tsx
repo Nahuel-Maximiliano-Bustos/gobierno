@@ -52,7 +52,17 @@ export const Conciliacion = () => {
   };
 
   return (
-    <div className="space-y-4 bg-[#E0E0E0] [&_*]:bg-inherit">
+    <>
+      <style>{`
+        .input-cuenta-filter {
+          background-color: #CACACA !important;
+          color: #000000 !important;
+        }
+        .input-cuenta-filter::placeholder {
+          color: #7D8184 !important;
+        }
+      `}</style>
+      <div className="space-y-4 bg-[#FFFFFF]">
       <Card className="!bg-transparent border-0">
         <CardHeader className="!bg-transparent">
           <CardTitle>Conciliación bancaria</CardTitle>
@@ -63,7 +73,7 @@ export const Conciliacion = () => {
               placeholder="Filtrar por cuenta (ej. CTA-001)"
               value={cuentaId ?? ''}
               onChange={(event) => setCuentaId(event.target.value || undefined)}
-              className="w-48 !bg-white"
+              className="w-48 input-cuenta-filter"
             />
             <Input type="file" accept=".csv" onChange={handleImport} className="w-60 !bg-white" />
             <Button
@@ -74,16 +84,29 @@ export const Conciliacion = () => {
             >
               Descargar plantilla
             </Button>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => downloadFile('conciliacion_ejemplo.csv', sampleConciliacion, 'text/csv')}
+              className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white"
+            >
+              Confirmar Conciliación
+            </Button>
             <p className="text-xs text-muted-foreground">Periodo bloqueado después del cierre mensual del día 25.</p>
           </div>
-          <BankMatchTable
+          
+          {/* <BankMatchTable
             movimientos={movimientos ?? []}
             onToggle={async (ids, conciliado) => {
               await conciliar.mutateAsync({ ids, conciliado });
             }}
-          />
+          /> */}
         </CardContent>
       </Card>
     </div>
+    </>
   );
 };
