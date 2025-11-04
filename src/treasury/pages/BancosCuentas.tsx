@@ -30,21 +30,21 @@ export const BancosCuentasPage = () => {
 
   return (
     <div className="space-y-4 bg-[#E0E0E0] [&_*]:bg-inherit">
-      <Card className="!bg-transparent border-0">
+      <Card className="!bg-white border-0">
         <CardHeader className="!bg-transparent">
           <CardTitle>Registrar cuenta bancaria</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-3 md:grid-cols-5 !bg-transparent">
-          <Input placeholder="Banco" value={form.banco ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, banco: event.target.value }))} className="!bg-white" />
-          <Input placeholder="Nombre" value={form.nombre ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, nombre: event.target.value }))} className="!bg-white" />
-          <Input placeholder="CLABE" value={form.clabe ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, clabe: event.target.value }))} className="!bg-white" />
+          <Input placeholder="Banco" value={form.banco ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, banco: event.target.value }))} className="!bg-[#CACACA] placeholder:text-[#4F5051]" />
+          <Input placeholder="Nombre" value={form.nombre ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, nombre: event.target.value }))} className="!bg-[#CACACA] placeholder:text-[#4F5051]" />
+          <Input placeholder="CLABE" value={form.clabe ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, clabe: event.target.value }))} className="!bg-[#CACACA] placeholder:text-[#4F5051]" />
           <Input
             type="number"
             step="0.01"
             placeholder="Saldo inicial"
             value={form.saldo ?? 0}
             onChange={(event) => setForm((prev) => ({ ...prev, saldo: Number(event.target.value) }))}
-            className="!bg-white"
+            className="!bg-[#CACACA] placeholder:text-[#4F5051]"
           />
           <Button onClick={handleSubmit} disabled={guardarCuenta.isPending} className="!bg-white">
             Guardar
