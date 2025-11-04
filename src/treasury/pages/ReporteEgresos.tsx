@@ -54,7 +54,7 @@ export const ReporteEgresosPage = () => {
       
       {data && (
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between">
+          <CardHeader className="flex flex-row items-center justify-between !bg-[#CACACA]">
             <div>
               <CardTitle>Libro de egresos</CardTitle>
               <p className="text-xs text-muted-foreground">Total registros: {data.libroEgresos.length}</p>

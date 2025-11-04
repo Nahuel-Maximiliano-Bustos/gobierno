@@ -35,22 +35,42 @@ export const BancosCuentasPage = () => {
           <CardTitle>Registrar cuenta bancaria</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-3 md:grid-cols-5 !bg-transparent">
-          <Input placeholder="Banco" value={form.banco ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, banco: event.target.value }))} className="!bg-[#CACACA] placeholder:text-[#4F5051]" />
-          <Input placeholder="Nombre" value={form.nombre ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, nombre: event.target.value }))} className="!bg-[#CACACA] placeholder:text-[#4F5051]" />
-          <Input placeholder="CLABE" value={form.clabe ?? ''} onChange={(event) => setForm((prev) => ({ ...prev, clabe: event.target.value }))} className="!bg-[#CACACA] placeholder:text-[#4F5051]" />
+          <Input 
+            placeholder="Banco" 
+            value={form.banco ?? ''} 
+            onChange={(event) => setForm((prev) => ({ ...prev, banco: event.target.value }))} 
+            className="!bg-[#CACACA] placeholder:text-[#1F2937]"
+          />
+          <Input 
+            placeholder="Nombre" 
+            value={form.nombre ?? ''} 
+            onChange={(event) => setForm((prev) => ({ ...prev, nombre: event.target.value }))} 
+            className="!bg-[#CACACA] placeholder:text-[#1F2937]"
+          />
+          <Input 
+            placeholder="CLABE" 
+            value={form.clabe ?? ''} 
+            onChange={(event) => setForm((prev) => ({ ...prev, clabe: event.target.value }))} 
+            className="!bg-[#CACACA] placeholder:text-[#1F2937]"
+          />
           <Input
             type="number"
             step="0.01"
             placeholder="Saldo inicial"
             value={form.saldo ?? 0}
             onChange={(event) => setForm((prev) => ({ ...prev, saldo: Number(event.target.value) }))}
-            className="!bg-[#CACACA] placeholder:text-[#4F5051]"
+            className="!bg-[#CACACA] placeholder:text-[#1F2937]"
           />
-          <Button onClick={handleSubmit} disabled={guardarCuenta.isPending} className="!bg-white">
+          <Button 
+            onClick={handleSubmit} 
+            disabled={guardarCuenta.isPending}
+            className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white"
+          >
             Guardar
           </Button>
         </CardContent>
       </Card>
+
       <Card className="!bg-transparent border-0">
         <CardHeader className="!bg-transparent">
           <CardTitle>Cuentas activas</CardTitle>

@@ -46,7 +46,7 @@ export const ReporteIngresosPage = () => {
           className="w-40"
         />
         <Button variant="ghost" size="sm" onClick={() => setFilters({})}>
-          Limpiar
+          Limpiar filtros
         </Button>
       </div>
 
@@ -54,12 +54,12 @@ export const ReporteIngresosPage = () => {
       
       {data && (
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between">
+          <CardHeader className="flex flex-row items-center justify-between !bg-[#CACACA]">
             <div>
               <CardTitle>Libro de ingresos</CardTitle>
               <p className="text-xs text-muted-foreground">Total registros: {data.libroIngresos.length}</p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 ">
               <Button className="!bg-[#0E1024] hover:!bg-[#1a1d3a] active:!bg-[#060812] !border !border-[#1a1d3a] !text-white" size="sm" onClick={() => exportReporteCSV('libro_ingresos', data.libroIngresos)}>
                 Exportar CSV
               </Button>
