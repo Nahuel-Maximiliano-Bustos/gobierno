@@ -16,7 +16,7 @@ export const useAuth = () => {
     const { token: authToken, user: sessionUser } = response.data;
     loginStore(authToken, sessionUser);
     toast({ title: 'Bienvenido', description: `Sesión iniciada como ${sessionUser.nombre}` });
-    navigate('/obras/dashboard', { replace: true });
+    navigate('/tesoreria/dashboard', { replace: true });
   };
 
   const logout = () => {
